@@ -15,16 +15,16 @@
 
 > There are some other modular solutions for CSS (such as OOCSS, AMCSS, SMACSS, SUITCSS). What are the reasons to choose BEM?
 
-BEM provides solutions for all the frontend technologies: CSS, JavaScript, templating; and also for building process of your web application. The methodology is applicable anywhere. However, to apply this in JavaScript and templating you would need special frameworks whereas in CSS you may just follow the methodological recommendations. The CSS part of BEM is the easiest to take into your development process. This is why many use only it. On the other hand, if lately you would found your project fully BEMed (in CSS) and yourself happy for its grown maintenance, you probably would take next step in modularizing your web application. BEM CSS will be easier to coordinate with modular JavaScript and blocks-based project file structure.
+BEM provides solutions for all the frontend technologies: CSS, JavaScript, templating; and also for the building process of your web application. The methodology is applicable anywhere. However, to apply BEM in JavaScript and templating you would need special frameworks whereas in CSS you only need to follow the methodological recommendations. For this reason, many deveopers choose to use BEM only for CSS. However, if you have been happy with the easy maintenance of your fully BEMed CSS project, you should probably consider taking next step in modularizing your web application. BEM CSS will be easier to coordinate with modular JavaScript and a blocks-based project file structure.
 
-If speaking about CSS modular solutions only, the key feature of BEM is block's independence. Following the CSS recommendations enables to put a block into any place on a page and be sure that is won't be affected by its surroundings. Also, if you would lately need to nest another block into the current one, their full compatibility is guaranteed. In other words, when maintaining your web application you would be able to move blocks across the page, add others and combine them.
+In regards to CSS modular solutions, the key feature of BEM is blocks independence. Following the CSS recommendations enables a developer to put a block anywhere on a page and rest assured that it won't be affected by its surroundings. Also, if you would later need to nest another block into the current one, their full compatibility is guaranteed. In other words, when maintaining your web application, you would be able to move blocks across the page, add others, and combine them.
 
 BEM CSS unambiguously defines which CSS belongs to a piece of interface and so using it gives answers to questions "Can I remove this piece of code?" and "What happens and which interface parts will be affected if I change this piece of code?".
 
 <a id="why-the-modifier-classes-are-prefixed"></a>
-## Why the modifier CSS classes are not represented as a combined selector?
+## Why are the modifier CSS classes not represented as a combined selector?
 
-> BEM recommends to modify blocks like this `<div class="block block--mod">`. Why not to use the simple version like `<div class="block mod">`? Since we now have combined selectors `.block.mod`, it's easy to define all the CSS properties to it.
+> BEM recommends that blocks be modified like so: `<div class="block block--mod">`. Why not use a simpler naming convenion such as: `<div class="block mod">` since we now have combined selectors `.block.mod` and it's easy to define all the CSS properties to it?
 
 The recommendation to prefix modifier CSS class with its block name has multiple reasons.
 
@@ -43,7 +43,7 @@ In this case adding `.active` modifier to them would affect both.
 
 All the 3 sit at the same DOM node, so it is impossible to differentiate if we mean `menu__item.active` or `button.active`. Whereas in the prefixed case the naming `button--active` unambiguously says as that this is only the button that has to be affected.
 
-Another point is CSS specificity. The combined selectors are more specific (means more important) than single class selectors. This means that you might have trouble when redefining them with parent block code.
+Another point is CSS specificity. The combined selectors are more specific (more important) than single class selectors. This means that you might have trouble when redefining them with parent block code.
 
 ```html
 <div class="header">
@@ -57,12 +57,12 @@ This makes life easier especially for maintainable projects.
 
 The third point is that looking at the `<div class="block block--mod">` markup you can clearly see the block structure. It is easy to recognize that we have a block and its modifier and there is no different interpretations here. Unfortunately a grasp onto `<div class="block mod">` code does not give such information. Depending on what are the exact CSS classes sometimes it is impossible to recognize if we have a block and a modifier or a mix of 2 blocks here. This might be even more confusing if the names of the entities are complex or contracted/abbreviated (which sometimes happens in big projects).<br/> Clear understanding of a block structure is especially helpful when looking for corresponding code on a file system.
 
-You will also appreciate `.block--mod` practice when refactoring and use global search over all your project files. Imagine the same looking for not-prefixed `.mod` and all the HTML pieces it might be in.
+You will also appreciate `.block--mod` practice when refactoring and using global search over all your project files. Imagine the same looking for non-prefixed `.mod` and all the locations it might be referenced.
 
 And lastly, from a development process standpoint the difference between `.block.mod` and `.block--mod` is only one symbol. Using `-` instead of `.` costs nothing but it brings all the benefits listed above. Moreover, since pre-processor began to support BEM notation, it is pretty natural to write `&--mod` there and finally get a modifier declared as it was recommended.
 
 <a id="custom-tags-for-blocks"></a>
-## Why do I need CSS classes for block instead of using semantic custom tags?
+## Why do I need CSS classes for a block? Can't I just use semantic custom tags?
 
 > Blocks can be represented as custom tags which we may define CSS rules for. Looks like we do not need CSS classes for blocks at all. They can be used for modifiers only, like `<button class="mod"/>`.
 
